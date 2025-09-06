@@ -1,0 +1,58 @@
+# .htaccess compatible Apache 2.4 pour mini-services.tech
+
+# Protection de base
+Options -Indexes
+
+# Bloquer l'accès aux fichiers sensibles (syntaxe Apache 2.4)
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+    Require all denied
+</FilesMatch>
+
+# Configuration basique
+DirectoryIndex index.php index.html
+
+# Activation du mode rewrite UNE SEULE FOIS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Bloquer l'accès aux dossiers système
+    RewriteRule ^(security|storage|config)/ - [F,L]
+    
+    # Protection contre les requêtes malveillantes basiques
+    RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC]
+    RewriteRule .* - [F]
+</IfModule>
+
+# Afficher les erreurs PHP (uniquement en local)
+<IfModule mod_php.c>
+    php_flag display_errors on
+    php_value error_reporting E_ALL
+</IfModule>
+
+# Protection des fichiers sensibles
+<FilesMatch "^(\.htaccess|\.htpasswd|config\.php)$">
+    Require all denied
+</FilesMatch>
+
+# Redirection des erreurs - Corrigé pour le bon chemin
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+
+# Définir UTF-8 comme charset par défaut
+AddDefaultCharset UTF-8
+
+# Compression GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript
+</IfModule>
+
+# Cache control
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

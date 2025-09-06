@@ -1,0 +1,565 @@
+/* CSS Améliorations Menu Mobile - Ajout à style.css */
+
+/* ===========================================
+   AMÉLIORATIONS MENU MOBILE - PHASE 1
+   =========================================== */
+
+/* Variables pour animations */
+:root {
+    --mobile-menu-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --mobile-overlay-color: rgba(0, 0, 0, 0.5);
+    --touch-target-size: 44px; /* Recommandation iOS/Android */
+}
+
+/* Menu hamburger amélioré */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: var(--mobile-menu-transition);
+    z-index: 1001;
+    position: relative;
+    width: var(--touch-target-size);
+    height: var(--touch-target-size);
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 3px 0;
+    transition: var(--mobile-menu-transition);
+    border-radius: 2px;
+    transform-origin: center;
+}
+
+/* Animation du hamburger vers X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Overlay pour fermer le menu */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--mobile-overlay-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--mobile-menu-transition);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Menu mobile moderne */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 280px;
+        max-width: 85vw;
+        height: calc(100vh - 70px);
+        background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        gap: 0;
+        padding: 30px 0;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        transition: var(--mobile-menu-transition);
+        z-index: 1000;
+        overflow-y: auto;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-menu li {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 18px 25px;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: var(--mobile-menu-transition);
+        position: relative;
+        min-height: var(--touch-target-size);
+        border-radius: 0;
+    }
+    
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--accent-color);
+        transform: translateX(5px);
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        opacity: 0;
+        transition: var(--mobile-menu-transition);
+    }
+    
+    .nav-link:hover::after {
+        opacity: 1;
+    }
+    
+    /* Icônes pour les liens mobiles */
+    .nav-link::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        background-size: contain;
+        opacity: 0.8;
+    }
+    
+    .nav-link[href="#home"]::before {
+        content: '🏠';
+        font-size: 18px;
+    }
+    
+    .nav-link[href="#services"]::before {
+        content: '⚙️';
+        font-size: 18px;
+    }
+    
+    .nav-link[href="guestbook.php"]::before {
+        content: '📝';
+        font-size: 18px;
+    }
+    
+    .nav-link[href="profile.php"]::before {
+        content: '👤';
+        font-size: 18px;
+    }
+    
+    .nav-link[href="login.php"]::before {
+        content: '🔐';
+        font-size: 18px;
+    }
+    
+    .nav-link[href="register.php"]::before {
+        content: '✨';
+        font-size: 18px;
+    }
+    
+    .nav-link[href="logout.php"]::before {
+        content: '🚪';
+        font-size: 18px;
+    }
+}
+
+/* Amélioration des boutons tactiles */
+@media (max-width: 768px) {
+    .btn {
+        min-height: var(--touch-target-size);
+        padding: 14px 24px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .service-card .btn {
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    /* Hero buttons responsive */
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Amélioration des cards services sur mobile */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .service-card {
+        padding: 25px 20px;
+        border-radius: 12px;
+        touch-action: manipulation;
+        transition: var(--transition), transform 0.2s ease;
+    }
+    
+    .service-card:active {
+        transform: scale(0.98);
+    }
+    
+    .service-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .service-icon i {
+        font-size: 1.8rem;
+    }
+    
+    .service-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+    
+    .service-card p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+}
+
+/* Animation d'entrée du menu mobile */
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Animation des liens du menu */
+@media (max-width: 768px) {
+    .nav-menu.active .nav-link {
+        animation: slideInLink 0.4s ease forwards;
+    }
+    
+    .nav-menu.active .nav-link:nth-child(1) { animation-delay: 0.1s; }
+    .nav-menu.active .nav-link:nth-child(2) { animation-delay: 0.15s; }
+    .nav-menu.active .nav-link:nth-child(3) { animation-delay: 0.2s; }
+    .nav-menu.active .nav-link:nth-child(4) { animation-delay: 0.25s; }
+    .nav-menu.active .nav-link:nth-child(5) { animation-delay: 0.3s; }
+    .nav-menu.active .nav-link:nth-child(6) { animation-delay: 0.35s; }
+}
+
+@keyframes slideInLink {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Amélioration du header sur mobile */
+@media (max-width: 768px) {
+    .header {
+        height: 60px;
+    }
+    
+    .nav-container {
+        height: 60px;
+        padding: 0 15px;
+    }
+    
+    .nav-brand h1 {
+        font-size: 1.3rem;
+    }
+    
+    .hero {
+        padding: 120px 0 80px;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+}
+
+/* Optimisation pour très petits écrans */
+@media (max-width: 480px) {
+    .nav-menu {
+        width: 100vw;
+        max-width: 100vw;
+        right: -100vw;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 20px 25px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .service-card {
+        padding: 20px 15px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Amélioration de l'accessibilité */
+@media (max-width: 768px) {
+    /* Focus visible pour navigation clavier */
+    .hamburger:focus,
+    .nav-link:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+    }
+    
+    /* Amélioration du contraste */
+    .nav-link:focus {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Support pour reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+        .hamburger,
+        .nav-menu,
+        .mobile-menu-overlay,
+        .nav-link {
+            transition: none;
+        }
+        
+        .nav-menu.active .nav-link {
+            animation: none;
+        }
+    }
+}
+
+/* Gestes tactiles améliorés */
+@media (max-width: 768px) {
+    /* Suppression du highlight lors du tap */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Zone de toucher élargie pour les petits éléments */
+    .hamburger::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        z-index: -1;
+    }
+    
+    /* Feedback haptique simulé via vibration légère */
+    .nav-link:active {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateX(3px);
+    }
+    
+    .btn:active {
+        transform: scale(0.96);
+    }
+    
+    .service-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Style pour les notifications sur mobile */
+@media (max-width: 768px) {
+    .notification {
+        position: fixed;
+        top: 70px;
+        left: 10px;
+        right: 10px;
+        margin: 0;
+        z-index: 1002;
+        border-radius: 8px;
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+/* Menu contextuel amélioré pour les services */
+@media (max-width: 768px) {
+    .service-card {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .service-card:hover::before {
+        left: 100%;
+    }
+    
+    /* Badge d'état pour les services */
+    .service-card[data-status="premium"]::after {
+        content: 'PRO';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: linear-gradient(135deg, var(--warning-color), #d97706);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        font-weight: bold;
+    }
+    
+    .service-card[data-status="new"]::after {
+        content: 'NOUVEAU';
+        background: linear-gradient(135deg, var(--success-color), #059669);
+    }
+}
+
+/* Support pour dark mode sur mobile */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+    .nav-menu {
+        background: linear-gradient(145deg, #1f2937, #374151);
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .nav-link {
+        color: #f3f4f6;
+    }
+    
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--accent-color);
+    }
+}
+
+/* Animation de chargement pour mobile */
+.mobile-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    display: none;
+}
+
+.mobile-loading.active {
+    display: block;
+}
+
+.mobile-loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+.mobile-loading p {
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 500;
+    margin: 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

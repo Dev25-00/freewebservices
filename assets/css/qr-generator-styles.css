@@ -1,0 +1,290 @@
+/* CSS spécialisé pour le Générateur QR Code - Background Radiant Bleu Électrique */
+
+/* Application spécifique au générateur de QR Code */
+.service-qr-generator .service-header,
+.service-page.service-qr-generator .service-header {
+    background: linear-gradient(135deg, 
+        #1e3a8a 0%,           /* Bleu marine profond */
+        #2563eb 25%,          /* Bleu primaire */
+        #3b82f6 50%,          /* Bleu clair */
+        #60a5fa 75%,          /* Bleu ciel */
+        #93c5fd 100%) !important; /* Bleu très clair */
+    background-size: 400% 400% !important;
+    animation: gradientFlowQR 12s ease-in-out infinite !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Animation du gradient ascendant pour QR */
+@keyframes gradientFlowQR {
+    0% {
+        background-position: 0% 100%;
+        transform: scale(1) rotateZ(0deg);
+    }
+    25% {
+        background-position: 100% 75%;
+        transform: scale(1.01) rotateZ(0.5deg);
+    }
+    50% {
+        background-position: 0% 50%;
+        transform: scale(1.02) rotateZ(0deg);
+    }
+    75% {
+        background-position: 100% 25%;
+        transform: scale(1.01) rotateZ(-0.5deg);
+    }
+    100% {
+        background-position: 0% 0%;
+        transform: scale(1) rotateZ(0deg);
+    }
+}
+
+/* Effet de particules flottantes bleues */
+.service-qr-generator .service-header::before,
+.service-page.service-qr-generator .service-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 15% 15%, rgba(147, 197, 253, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(96, 165, 250, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 35% 75%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 75% 25%, rgba(37, 99, 235, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 60%, rgba(147, 197, 253, 0.2) 0%, transparent 30%);
+    animation: particleFloatQR 12s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes particleFloatQR {
+    0%, 100% {
+        opacity: 1;
+        transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+        opacity: 0.8;
+        transform: translateY(-8px) rotate(2deg);
+    }
+    66% {
+        opacity: 0.6;
+        transform: translateY(-5px) rotate(-1deg);
+    }
+}
+
+/* Effet de brillance bleue qui traverse */
+.service-qr-generator .service-header::after,
+.service-page.service-qr-generator .service-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 15%, 
+        rgba(147, 197, 253, 0.5) 30%,
+        rgba(255, 255, 255, 0.8) 50%, 
+        rgba(147, 197, 253, 0.5) 70%,
+        transparent 85%);
+    animation: shimmerQR 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmerQR {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+/* Amélioration de l'icône principale avec thème bleu */
+.service-qr-generator .service-icon-large,
+.service-page.service-qr-generator .service-icon-large {
+    background: rgba(147, 197, 253, 0.3) !important;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3), 0 0 25px rgba(147, 197, 253, 0.4);
+    animation: iconPulseQR 5s ease-in-out infinite;
+}
+
+@keyframes iconPulseQR {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3), 0 0 25px rgba(147, 197, 253, 0.4);
+    }
+    25% {
+        transform: scale(1.03) rotate(1deg);
+        box-shadow: 0 12px 40px rgba(37, 99, 235, 0.4), 0 0 35px rgba(147, 197, 253, 0.6);
+    }
+    50% {
+        transform: scale(1.05) rotate(0deg);
+        box-shadow: 0 15px 45px rgba(37, 99, 235, 0.5), 0 0 40px rgba(147, 197, 253, 0.7);
+    }
+    75% {
+        transform: scale(1.03) rotate(-1deg);
+        box-shadow: 0 12px 40px rgba(37, 99, 235, 0.4), 0 0 35px rgba(147, 197, 253, 0.6);
+    }
+}
+
+/* Amélioration du texte principal */
+.service-qr-generator .service-title,
+.service-page.service-qr-generator .service-title {
+    color: white !important;
+    text-shadow: 0 2px 8px rgba(30, 58, 138, 0.4);
+    animation: fadeInUpQR 1s ease-out;
+}
+
+.service-qr-generator .service-description,
+.service-page.service-qr-generator .service-description {
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 1px 4px rgba(30, 58, 138, 0.3);
+    animation: fadeInUpQR 1s ease-out 0.2s both;
+}
+
+/* Amélioration des tags de fonctionnalités avec teinte bleue */
+.service-qr-generator .feature-tag,
+.service-page.service-qr-generator .feature-tag {
+    background: rgba(147, 197, 253, 0.35) !important;
+    color: white !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(30, 58, 138, 0.4);
+    animation: tagFloatQR 4s ease-in-out infinite;
+    animation-delay: calc(var(--delay, 0) * 0.3s);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-qr-generator .feature-tag:hover,
+.service-page.service-qr-generator .feature-tag:hover {
+    background: rgba(147, 197, 253, 0.5) !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3), 0 0 20px rgba(147, 197, 253, 0.5);
+}
+
+@keyframes tagFloatQR {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-4px) rotate(0.5deg);
+    }
+    50% {
+        transform: translateY(-2px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-6px) rotate(-0.5deg);
+    }
+}
+
+/* Amélioration des indicateurs */
+.service-qr-generator .indicator,
+.service-page.service-qr-generator .indicator {
+    color: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeInUpQR 1s ease-out 0.6s both;
+    transition: all 0.3s ease;
+}
+
+.service-qr-generator .indicator:hover,
+.service-page.service-qr-generator .indicator:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+}
+
+.service-qr-generator .indicator i,
+.service-page.service-qr-generator .indicator i {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Animations d'entrée */
+@keyframes fadeInUpQR {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajout des délais d'animation pour les tags */
+.service-qr-generator .feature-tag:nth-child(1),
+.service-page.service-qr-generator .feature-tag:nth-child(1) { --delay: 0; }
+.service-qr-generator .feature-tag:nth-child(2),
+.service-page.service-qr-generator .feature-tag:nth-child(2) { --delay: 1; }
+.service-qr-generator .feature-tag:nth-child(3),
+.service-page.service-qr-generator .feature-tag:nth-child(3) { --delay: 2; }
+.service-qr-generator .feature-tag:nth-child(4),
+.service-page.service-qr-generator .feature-tag:nth-child(4) { --delay: 3; }
+.service-qr-generator .feature-tag:nth-child(5),
+.service-page.service-qr-generator .feature-tag:nth-child(5) { --delay: 4; }
+
+/* Effet spécial QR Code pixélisé dans le background */
+.service-qr-generator .service-header,
+.service-page.service-qr-generator .service-header {
+    background-image: 
+        linear-gradient(135deg, 
+            #1e3a8a 0%,
+            #2563eb 25%,
+            #3b82f6 50%,
+            #60a5fa 75%,
+            #93c5fd 100%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 15%);
+    background-size: 400% 400%, 50px 50px, 30px 30px !important;
+}
+
+/* Responsive amélioré pour le générateur de QR Code */
+@media (max-width: 768px) {
+    .service-qr-generator .service-header,
+    .service-page.service-qr-generator .service-header {
+        padding: 3rem 1.5rem;
+    }
+    
+    .service-qr-generator .service-icon-large,
+    .service-page.service-qr-generator .service-icon-large {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .service-qr-generator .service-title,
+    .service-page.service-qr-generator .service-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-qr-generator .service-header,
+    .service-page.service-qr-generator .service-header {
+        padding: 2rem 1rem;
+    }
+    
+    .service-qr-generator .service-title,
+    .service-page.service-qr-generator .service-title {
+        font-size: 1.75rem;
+    }
+    
+    .service-qr-generator .feature-tag,
+    .service-page.service-qr-generator .feature-tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Effet de hover sur l'ensemble du header */
+.service-qr-generator .service-header:hover,
+.service-page.service-qr-generator .service-header:hover {
+    animation-duration: 8s !important;
+}

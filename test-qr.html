@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test QR Code Library</title>
+</head>
+<body>
+    <h1>Test de chargement des bibliothèques QR</h1>
+    <div id="test-results"></div>
+    
+    <script>
+        const results = document.getElementById('test-results');
+        
+        // Test 1: CDN jsDelivr
+        results.innerHTML += '<p>Test 1: jsDelivr CDN...</p>';
+        const script1 = document.createElement('script');
+        script1.onload = () => {
+            results.innerHTML += '<p style="color: green;">✅ jsDelivr CDN fonctionne!</p>';
+            testQRCode();
+        };
+        script1.onerror = () => {
+            results.innerHTML += '<p style="color: red;">❌ jsDelivr CDN ne fonctionne pas</p>';
+            testCDNJS();
+        };
+        script1.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js';
+        document.head.appendChild(script1);
+        
+        function testCDNJS() {
+            results.innerHTML += '<p>Test 2: CDNJS...</p>';
+            const script2 = document.createElement('script');
+            script2.onload = () => {
+                results.innerHTML += '<p style="color: green;">✅ CDNJS fonctionne!</p>';
+                testQRCode();
+            };
+            script2.onerror = () => {
+                results.innerHTML += '<p style="color: red;">❌ CDNJS ne fonctionne pas</p>';
+                results.innerHTML += '<p style="color: orange;">🔄 Utilisation du fallback API...</p>';
+                testFallback();
+            };
+            script2.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js';
+            document.head.appendChild(script2);
+        }
+        
+        function testQRCode() {
+            if (typeof QRCode !== 'undefined') {
+                results.innerHTML += '<p style="color: green;">✅ QRCode library chargée avec succès!</p>';
+                
+                // Test de génération
+                const container = document.createElement('div');
+                container.id = 'qr-test';
+                results.appendChild(container);
+                
+                try {
+                    const qr = new QRCode(container, {
+                        text: 'https://google.com',
+                        width: 200,
+                        height: 200
+                    });
+                    results.innerHTML += '<p style="color: green;">✅ QR Code généré avec succès!</p>';
+                } catch (error) {
+                    results.innerHTML += '<p style="color: red;">❌ Erreur de génération: ' + error.message + '</p>';
+                }
+            } else {
+                results.innerHTML += '<p style="color: red;">❌ QRCode library non disponible</p>';
+            }
+        }
+        
+        function testFallback() {
+            // Test du service API
+            const img = document.createElement('img');
+            img.onload = () => {
+                results.innerHTML += '<p style="color: green;">✅ API QR Server fonctionne!</p>';
+            };
+            img.onerror = () => {
+                results.innerHTML += '<p style="color: red;">❌ API QR Server ne fonctionne pas</p>';
+            };
+            img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=test';
+            img.style.display = 'none';
+            results.appendChild(img);
+        }
+    </script>
+</body>
+</html>

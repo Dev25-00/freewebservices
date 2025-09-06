@@ -1,0 +1,681 @@
+/* CSS spécialisé pour le Générateur de Hashtags - Background Radiant Vert */
+
+/* Application spécifique au générateur de hashtags */
+.service-hashtag-generator .service-header,
+.service-page.service-hashtag-generator .service-header {
+    background: linear-gradient(135deg, 
+        #059669 0%,           /* Vert émeraude profond */
+        #10b981 25%,          /* Vert émeraude */
+        #34d399 50%,          /* Vert menthe */
+        #6ee7b7 75%,          /* Vert clair */
+        #a7f3d0 100%) !important; /* Vert très clair */
+    background-size: 400% 400% !important;
+    animation: gradientFlow 15s ease-in-out infinite !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.25) !important;
+}
+
+/* Animation du gradient ascendant */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 100%;
+        transform: scale(1);
+    }
+    25% {
+        background-position: 100% 75%;
+        transform: scale(1.01);
+    }
+    50% {
+        background-position: 0% 50%;
+        transform: scale(1.02);
+    }
+    75% {
+        background-position: 100% 25%;
+        transform: scale(1.01);
+    }
+    100% {
+        background-position: 0% 0%;
+        transform: scale(1);
+    }
+}
+
+/* Effet de particules flottantes vertes */
+.service-hashtag-generator .service-header::before,
+.service-page.service-hashtag-generator .service-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(167, 243, 208, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(110, 231, 183, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 70%, rgba(52, 211, 153, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(16, 185, 129, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 60% 10%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+    animation: particleFloat 10s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateY(-10px);
+    }
+}
+
+/* Effet de brillance verte qui traverse */
+.service-hashtag-generator .service-header::after,
+.service-page.service-hashtag-generator .service-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 20%, 
+        rgba(167, 243, 208, 0.4) 35%,
+        rgba(255, 255, 255, 0.6) 50%, 
+        rgba(167, 243, 208, 0.4) 65%,
+        transparent 80%);
+    animation: shimmer 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+/* Amélioration de l'icône principale avec thème vert */
+.service-hashtag-generator .service-icon-large,
+.service-page.service-hashtag-generator .service-icon-large {
+    background: rgba(167, 243, 208, 0.25) !important;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(5, 150, 105, 0.2), 0 0 20px rgba(167, 243, 208, 0.3);
+    animation: iconPulse 4s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 8px 32px rgba(5, 150, 105, 0.2), 0 0 20px rgba(167, 243, 208, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 12px 40px rgba(5, 150, 105, 0.3), 0 0 30px rgba(167, 243, 208, 0.5);
+    }
+}
+
+/* Amélioration du texte principal */
+.service-hashtag-generator .service-title,
+.service-page.service-hashtag-generator .service-title {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+}
+
+.service-hashtag-generator .service-description,
+.service-page.service-hashtag-generator .service-description {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Amélioration des tags de fonctionnalités avec teinte verte */
+.service-hashtag-generator .feature-tag,
+.service-page.service-hashtag-generator .feature-tag {
+    background: rgba(167, 243, 208, 0.3) !important;
+    color: white !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(5, 150, 105, 0.3);
+    animation: tagFloat 3s ease-in-out infinite;
+    animation-delay: calc(var(--delay, 0) * 0.2s);
+}
+
+.service-hashtag-generator .feature-tag:hover,
+.service-page.service-hashtag-generator .feature-tag:hover {
+    background: rgba(167, 243, 208, 0.45) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2), 0 0 15px rgba(167, 243, 208, 0.4);
+}
+
+@keyframes tagFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Amélioration des indicateurs */
+.service-hashtag-generator .indicator,
+.service-page.service-hashtag-generator .indicator {
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.service-hashtag-generator .indicator:hover,
+.service-page.service-hashtag-generator .indicator:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.service-hashtag-generator .indicator i,
+.service-page.service-hashtag-generator .indicator i {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Animations d'entrée */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajout des délais d'animation pour les tags */
+.service-hashtag-generator .feature-tag:nth-child(1),
+.service-page.service-hashtag-generator .feature-tag:nth-child(1) { --delay: 0; }
+.service-hashtag-generator .feature-tag:nth-child(2),
+.service-page.service-hashtag-generator .feature-tag:nth-child(2) { --delay: 1; }
+.service-hashtag-generator .feature-tag:nth-child(3),
+.service-page.service-hashtag-generator .feature-tag:nth-child(3) { --delay: 2; }
+.service-hashtag-generator .feature-tag:nth-child(4),
+.service-page.service-hashtag-generator .feature-tag:nth-child(4) { --delay: 3; }
+.service-hashtag-generator .feature-tag:nth-child(5),
+.service-page.service-hashtag-generator .feature-tag:nth-child(5) { --delay: 4; }
+
+/* Responsive amélioré pour le générateur de hashtags */
+@media (max-width: 768px) {
+    .service-hashtag-generator .service-header,
+    .service-page.service-hashtag-generator .service-header {
+        padding: 3rem 1.5rem;
+    }
+    
+    .service-hashtag-generator .service-icon-large,
+    .service-page.service-hashtag-generator .service-icon-large {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-hashtag-generator .service-header,
+    .service-page.service-hashtag-generator .service-header {
+        padding: 2rem 1rem;
+    }
+}
+
+/* ========================================
+   STYLES POUR L'AFFICHAGE DES HASHTAGS
+   ======================================== */
+
+/* Container principal des résultats de hashtags */
+.hashtags-result {
+    width: 100%;
+    background: var(--background-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* En-tête des résultats */
+.hashtags-header {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hashtags-title h4 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.hashtags-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.format-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 200px;
+}
+
+.format-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.format-selector select {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius);
+    color: var(--text-dark);
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.format-selector select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.hashtags-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Aperçu du format */
+.format-preview {
+    background: var(--background-light);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+}
+
+.preview-header {
+    color: var(--text-medium);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.preview-content {
+    background: var(--background-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    white-space: pre-wrap;
+    max-height: 100px;
+    overflow-y: auto;
+    line-height: 1.4;
+}
+
+/* Grille de hashtags */
+.hashtags-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    padding: 2rem;
+    background: var(--background-light);
+}
+
+/* Item hashtag individuel */
+.hashtag-item {
+    background: var(--background-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hashtag-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.hashtag-item:hover::before {
+    left: 100%;
+}
+
+.hashtag-item:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.hashtag-item.selected {
+    border-color: var(--primary-color);
+    background: var(--primary-light);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.hashtag-text {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1rem;
+    flex: 1;
+    margin-right: 0.5rem;
+    word-break: break-word;
+}
+
+.hashtag-item.selected .hashtag-text {
+    color: var(--primary-color);
+}
+
+/* Contrôles des hashtags */
+.hashtag-controls {
+    display: flex;
+    gap: 0.25rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.hashtag-item:hover .hashtag-controls {
+    opacity: 1;
+}
+
+.hashtag-select-btn,
+.hashtag-copy-btn {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    border-radius: var(--radius);
+    color: var(--text-medium);
+    transition: all 0.3s ease;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hashtag-select-btn:hover,
+.hashtag-copy-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.hashtag-item.selected .hashtag-select-btn {
+    color: var(--primary-color);
+}
+
+/* Pied de page des résultats */
+.hashtags-footer {
+    background: var(--background-white);
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.hashtags-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.hashtags-stats span {
+    color: var(--text-medium);
+}
+
+.hashtags-tips {
+    background: var(--info-light);
+    border: 1px solid var(--info-color);
+    border-radius: var(--radius);
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: var(--info-color);
+}
+
+.hashtags-tips i {
+    margin-right: 0.5rem;
+}
+
+/* Boutons d'action spécialisés */
+.btn-primary.btn-small,
+.btn-outline.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.btn-primary.btn-small {
+    background: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary.btn-small:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
+}
+
+.btn-outline.btn-small {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-outline.btn-small:hover:not(:disabled) {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
+}
+
+.btn-outline.btn-small:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Animations spéciales */
+@keyframes hashtagAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.hashtag-item {
+    animation: hashtagAppear 0.4s ease-out;
+    animation-fill-mode: both;
+}
+
+/* Délais d'animation pour l'effet cascade */
+.hashtag-item:nth-child(1) { animation-delay: 0.05s; }
+.hashtag-item:nth-child(2) { animation-delay: 0.1s; }
+.hashtag-item:nth-child(3) { animation-delay: 0.15s; }
+.hashtag-item:nth-child(4) { animation-delay: 0.2s; }
+.hashtag-item:nth-child(5) { animation-delay: 0.25s; }
+.hashtag-item:nth-child(6) { animation-delay: 0.3s; }
+.hashtag-item:nth-child(7) { animation-delay: 0.35s; }
+.hashtag-item:nth-child(8) { animation-delay: 0.4s; }
+.hashtag-item:nth-child(9) { animation-delay: 0.45s; }
+.hashtag-item:nth-child(10) { animation-delay: 0.5s; }
+
+/* Animation de succès pour la copie */
+@keyframes copySuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); background: var(--success-color); }
+    100% { transform: scale(1); }
+}
+
+.hashtag-copy-btn.copied {
+    animation: copySuccess 0.4s ease;
+}
+
+/* Responsive pour les hashtags */
+@media (max-width: 768px) {
+    .hashtags-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 0.5rem;
+        padding: 1.5rem;
+    }
+    
+    .hashtags-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .hashtags-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    .format-selector {
+        min-width: auto;
+    }
+    
+    .hashtags-actions {
+        justify-content: center;
+    }
+    
+    .format-preview {
+        padding: 1rem 1.5rem;
+    }
+    
+    .hashtags-footer {
+        padding: 1rem 1.5rem;
+    }
+    
+    .hashtags-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hashtags-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .hashtag-item {
+        padding: 0.75rem;
+    }
+    
+    .hashtags-header {
+        padding: 1rem;
+    }
+    
+    .hashtags-controls {
+        gap: 0.75rem;
+    }
+    
+    .format-preview {
+        padding: 1rem;
+    }
+    
+    .hashtags-footer {
+        padding: 1rem;
+    }
+    
+    .btn-primary.btn-small,
+    .btn-outline.btn-small {
+        padding: 0.625rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .hashtags-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .format-selector {
+        order: -1;
+    }
+}
+
+/* États de chargement */
+.hashtag-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    color: var(--text-medium);
+}
+
+.hashtag-loading i {
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: var(--primary-color);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Messages d'erreur spécifiques */
+.hashtag-error {
+    background: var(--danger-light);
+    color: var(--danger-color);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin: 1rem 2rem;
+    border: 1px solid var(--danger-color);
+    text-align: center;
+}
+
+.hashtag-error i {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}

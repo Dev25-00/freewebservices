@@ -1,0 +1,8 @@
+<?php
+require_once 'config.php';
+
+header('Content-Type: text/plain; charset=utf-8');
+
+$analytics = AnalyticsAndSEO::getInstance();
+echo $analytics->generateRobotsTxt();
+?>
