@@ -1,4 +1,4 @@
-# ⚡ MiniServices
+# ⚡ freewebservices
 
 A modular suite of lightweight services, automated scripts, and API utilities designed to streamline web tasks, micro-workflows, and automated prospection.
 
